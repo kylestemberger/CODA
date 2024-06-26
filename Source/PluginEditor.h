@@ -35,38 +35,28 @@ public:
     
     void sliderValueChanged(juce::Slider *slider) override;
 
-    
-
-
 private:
     CodaProcessor& processor_;
     
-    
-    
     juce::Image background;
     
-    
-    
     juce::Slider centerSlider;
-    
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> centerSliderAtt;
    
     CodaSlider amountSlider;
-    
-   
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> amountSliderAtt;
     
     FocusSlider focusSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> focusSliderAtt;
+    
     juce::Label  centerLabel;
-  
     
     GradientSlider gradientSlider;
-    
-    
-  
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gradientSliderAtt;
     
     juce::Image GradientStrip;
     
-    
-
+    double mult = 0.75;
     
     class MainContentComponent   : public juce::Component,
     public juce::Slider::Listener

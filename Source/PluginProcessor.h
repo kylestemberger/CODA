@@ -128,9 +128,9 @@ class CodaProcessor : public juce::AudioProcessor {
     int next_smooth_in_ = 0;
 
     juce::AudioParameterInt& filter_stages_;
-    std::atomic<float>& filter_frequency_;
+    juce::AudioParameterInt& filter_frequency_;
     juce::SmoothedValue<float> smoothed_filter_frequency_;
-    std::atomic<float>& filter_resonance_;
+    juce::AudioParameterFloat& filter_resonance_;
     juce::SmoothedValue<float> smoothed_filter_resonance_;
     /**
      * A cutoff spread between the filter stages. When this value is `0`, the

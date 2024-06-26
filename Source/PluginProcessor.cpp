@@ -69,19 +69,12 @@ CodaProcessor::CodaProcessor()
                   // TODO: Figure out some way to get rid of the resonances when
                   //       sweep the frequency down when using a large number of
                   //       stages
-                  std::make_unique<juce::AudioParameterFloat>(
+                  std::make_unique<juce::AudioParameterInt>(
                       filter_frequency_param_name,
                       "Center",
-                      juce::NormalisableRange<float>(20.0f,
-                                                     20000.0f,
-                                                     1.0f,
-                                                     0.2f),
-                      130.0f,
-                      " Hz",
-                      juce::AudioProcessorParameter::genericParameter,
-                      [](float value, int /*max_length*/) -> juce::String {
-                          return juce::String(value, 0);
-                      }),
+                      20,
+                      20000,
+                      130),
                   // TODO DISPLAY THIS RANGE MORE CLEARLY
                                                                    
                   std::make_unique<juce::AudioParameterFloat>(
@@ -153,10 +146,10 @@ CodaProcessor::CodaProcessor()
       //
       filter_stages_(*dynamic_cast<juce::AudioParameterInt*>(
           parameters_.getParameter(filter_stages_param_name))),
-      filter_frequency_(
-          *parameters_.getRawParameterValue(filter_frequency_param_name)),
-      filter_resonance_(
-          *parameters_.getRawParameterValue(filter_resonance_param_name)),
+      filter_frequency_(*dynamic_cast<juce::AudioParameterInt*>(
+          parameters_.getParameter(filter_frequency_param_name))),
+      filter_resonance_(*dynamic_cast<juce::AudioParameterFloat*>(
+          parameters_.getParameter(filter_resonance_param_name))),
       filter_spread_(
           *parameters_.getRawParameterValue(filter_spread_param_name)),
       filter_spread_linear_(*dynamic_cast<juce::AudioParameterBool*>(
@@ -453,7 +446,7 @@ juce::AudioProcessorEditor* CodaProcessor::createEditor() {
 
 void CodaProcessor::getStateInformation(juce::MemoryBlock& destData) {
     const std::unique_ptr<juce::XmlElement> xml =
-        parameters_.copyState().createXml();
+    parameters_.copyState().createXml();
     copyXmlToBinary(*xml, destData);
 }
 

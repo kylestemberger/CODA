@@ -3,7 +3,7 @@
 <JUCERPROJECT id="kOdxwn" name="Coda" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               version="1.0.3" companyName="Haven Audio" companyWebsite="haven.audio"
-              companyEmail="contact@haven.audio" pluginFormats="buildAU,buildVST3"
+              companyEmail="contact@haven.audio" pluginFormats="buildAU,buildStandalone,buildVST3"
               pluginCode="Coda" pluginManufacturerCode="HAVN">
   <MAINGROUP id="d8b2xw" name="Coda">
     <GROUP id="{6E07BFAE-6206-E7C7-C99C-69F1A67AC72E}" name="Assets">
