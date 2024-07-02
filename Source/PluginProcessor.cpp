@@ -21,7 +21,7 @@ constexpr char smoothing_interval_param_name[] = "smoothing_interval";
  * between the old and the new values over the course of this time span to
  * prevent clicks.
  */
-constexpr float filter_smoothing_secs = 0.1f;
+constexpr float filter_smoothing_secs = 1.0f;
 
 /**
  * The default filter resonance. This value should minimize the amount of
@@ -156,7 +156,11 @@ CodaProcessor::CodaProcessor()
           parameters_.getParameter(filter_spread_linear_param_name))),
       smoothing_interval_(*dynamic_cast<juce::AudioParameterInt*>(
           parameters_.getParameter(smoothing_interval_param_name))),
-      filter_stages_updater_([&]() { update_and_swap_filters(); }),
+      filter_stages_updater_([&]() 
+                             {
+          //update_and_swap_filters();
+          smoothed_filter_spread_.setTargetValue(filter_stages_);
+      }),
       filter_stages_listener_(
           [&](const juce::String& /*parameter_id*/, float /*new_value*/) {
               // Resize our filter vector from a background thread
@@ -303,8 +307,6 @@ void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     for (auto channel = input_channels; channel < output_channels; channel++) {
         buffer.clear(channel, 0.0f, num_samples);
-        
-        
     }
 
     // Our filter structure gets updated from a background thread whenever the
@@ -313,7 +315,7 @@ void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     smoothed_filter_frequency_.setTargetValue(filter_frequency_);
     smoothed_filter_resonance_.setTargetValue(filter_resonance_);
-    smoothed_filter_spread_.setTargetValue(filter_spread_);
+    //smoothed_filter_spread_.setTargetValue(filter_spread_);
     for (size_t sample_idx = 0; sample_idx < num_samples; sample_idx++) {
         // Recomputing these IIR coefficients every sample is expensive, so to
         // save some cycles we only do it once every `smoothing_interval`
@@ -420,15 +422,30 @@ void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         filters.is_initialized = true;
         old_filter_spread_linear_ = filter_spread_linear_;
 
-        for (auto& stage : filters.stages) {
-            for (size_t channel = 0; channel < input_channels; channel++) {
-                // TODO: We should add a dry-wet control, could be useful for
-                //       automation
-                // TODO: Oh and we should _definitely_ have some kind of 'safe
-                //       mode' limiter enabled by default
-                buffer.getArrayOfWritePointers()[channel][sample_idx] =
-                    stage.channels[channel].processSample(
-                                                          buffer.getArrayOfWritePointers()[channel][sample_idx]);
+//        for (auto& stage : filters.stages) 
+//        {
+//            for (size_t channel = 0; channel < input_channels; channel++) 
+//            {
+//                // TODO: We should add a dry-wet control, could be useful for
+//                //       automation
+//                // TODO: Oh and we should _definitely_ have some kind of 'safe
+//                //       mode' limiter enabled by default
+//                buffer.getArrayOfWritePointers()[channel][sample_idx] =
+//                    stage.channels[channel].processSample(
+//                                                          buffer.getArrayOfWritePointers()[channel][sample_idx]);
+//            }
+//        }
+        
+        if (!smoothed_filter_spread_.isSmoothing())
+        {
+            for (int i = 0; i < filter_stages_; ++i)
+            {
+                for (size_t channel = 0; channel < input_channels; channel++)
+                {
+                    buffer.getArrayOfWritePointers()[channel][sample_idx] =
+                    filters.stages[i].channels[channel].processSample(
+                                                              buffer.getArrayOfWritePointers()[channel][sample_idx]);
+                }
             }
         }
     }
@@ -472,10 +489,14 @@ void CodaProcessor::setStateInformation(const void* data, int sizeInBytes) {
     }
 }
 
-void CodaProcessor::update_and_swap_filters() {
-    filters_.modify_and_swap([this](Filters& filters) {
+void CodaProcessor::update_and_swap_filters() 
+{
+    
+    auto newCoeffs = new juce::dsp::IIR::Coefficients<float>(FilterStage::Coefficients{});
+    filters_.modify_and_swap([this, &newCoeffs](Filters& filters) 
+    {
         filters.is_initialized = false;
-        filters.stages.resize(static_cast<size_t>(filter_stages_));
+        filters.stages.resize(static_cast<size_t>(40));
 
         for (auto& stage : filters.stages) {
             // The actual coefficients for each stage are initialized on the
@@ -483,8 +504,7 @@ void CodaProcessor::update_and_swap_filters() {
             if (!stage.coefficients) {
                 // The actual values here don't matter and we can just use
                 // any 6 length array
-                stage.coefficients = new juce::dsp::IIR::Coefficients<float>(
-                    FilterStage::Coefficients{});
+                stage.coefficients = newCoeffs;
             }
 
             stage.channels.resize(

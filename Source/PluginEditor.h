@@ -8,20 +8,13 @@
 
 #include "CodaSlider.h"
 
-
 #include "codaSliderLookAndFeel.h"
 
 #include "FocusSlider.h"
 
 #include "FocusSliderLNF.h"
 
-
-
-
-
-
-
-
+#include "laf/centerSliderLAF.h"
 
 class CodaEditor : public juce::AudioProcessorEditor,
                 public juce::Slider::Listener
@@ -57,6 +50,8 @@ private:
     juce::Image GradientStrip;
     
     double mult = 0.75;
+    
+    CutoffSlider cutoffLAF;
     
     class MainContentComponent   : public juce::Component,
     public juce::Slider::Listener

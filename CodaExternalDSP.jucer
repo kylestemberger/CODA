@@ -18,6 +18,10 @@
       <FILE id="se3BBX" name="knobRelease.png" compile="0" resource="1" file="Source/Assets/knobRelease.png"/>
     </GROUP>
     <GROUP id="{AB593A30-1888-3DE4-3721-6027AB1B2A28}" name="Source">
+      <GROUP id="{4C84478B-AD40-4F0D-926B-3D6A0586B13B}" name="laf">
+        <FILE id="ZhBKWk" name="centerSliderLAF.h" compile="0" resource="0"
+              file="Source/laf/centerSliderLAF.h"/>
+      </GROUP>
       <FILE id="CS6TLr" name="FocusSlider.cpp" compile="1" resource="0" file="Source/FocusSlider.cpp"/>
       <FILE id="omdiCK" name="FocusSlider.h" compile="0" resource="0" file="Source/FocusSlider.h"/>
       <FILE id="B4PyDM" name="codaSliderLookAndFeel.cpp" compile="1" resource="0"

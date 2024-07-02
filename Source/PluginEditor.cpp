@@ -8,12 +8,9 @@
 CodaEditor::CodaEditor(CodaProcessor& p)
     : AudioProcessorEditor(&p), processor_(p)
 {
-   // The frequency slider
-   addAndMakeVisible(centerSlider);
-   
    centerSlider.setRange(20.0f, 20000.0f, 1.0f);
    centerSlider.setSliderStyle(juce::Slider::LinearHorizontal);
-   centerSlider.setTextBoxStyle(juce::Slider::TextBoxAbove, false, 100, 30);
+   centerSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
    centerSlider.addListener (this);
    centerSlider.setSkewFactor(0.2);
    centerSlider.setTextValueSuffix("hz");
@@ -24,6 +21,7 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     auto amountValue = processor_.parameters_.getParameter("filter_freq")->getValue();
     auto from0 = processor_.parameters_.getParameter("filter_freq")->convertFrom0to1(amountValue);
     centerSlider.setValue(from0);
+    centerSlider.setLookAndFeel(&cutoffLAF);
    
    // The amount dial
    addAndMakeVisible(amountSlider);
@@ -68,12 +66,15 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     from0 = processor_.parameters_.getParameter("filter_res")->convertFrom0to1(amountValue);
     focusSlider.setValue(from0);
     
+    // The frequency slider
+    addAndMakeVisible(centerSlider);
+    
     setSize (548 * mult, 735 * mult);
 }
 
 CodaEditor::~CodaEditor() 
 {
-    
+    centerSlider.setLookAndFeel(nullptr);
 }
 
 void CodaEditor::paint(juce::Graphics& g)
@@ -85,10 +86,10 @@ void CodaEditor::paint(juce::Graphics& g)
 void CodaEditor::resized()
 
 {
-    auto compX = getWidth() * 0.18;
-    auto compY = getHeight() * 0.52;
-    auto compWidth = getWidth() * 0.64;
-    auto compHeight = getHeight() * 0.1;
+    auto compX = getWidth() * 0.24;
+    auto compY = getHeight() * 0.25;
+    auto compWidth = getWidth() * 0.59;
+    auto compHeight = getHeight() * 0.335;
     centerSlider.setBounds(compX, compY, compWidth, compHeight);
     
     compX = getWidth() * 0.17;
