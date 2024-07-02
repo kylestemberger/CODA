@@ -17,7 +17,6 @@ CodaSliderLookAndFeel::CodaSliderLookAndFeel() : LookAndFeel_V4()
 void CodaSliderLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos, float rotaryStartAngle, float rotaryEndAngle, juce::Slider& slider)
 {
     if (AmountKnob.isValid())
- 
     {
         const double rotation = (slider.getValue()
                                  - slider.getMinimum())
@@ -28,18 +27,11 @@ void CodaSliderLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, in
         const int frames = 10;
         const int frameId = (int)ceil(rotation * ((double)frames - 1.0));
         
-        
-        
         int imgWidth = AmountKnob.getWidth();
         int imgHeight = AmountKnob.getHeight() / frames;
+        
         g.drawImage(AmountKnob, 0, 0, imgWidth, imgHeight, 0, frameId * imgHeight, imgWidth, imgHeight);
     }
-   
-    
-    
-    
-
-
 }
 
 
@@ -107,7 +99,6 @@ void GradientSliderLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y
     
     int imgWidth1 = GradientStrip.getWidth();
     int imgHeight1 = GradientStrip.getHeight() / frames;
+    g.setOpacity(0.75f);
     g.drawImage(GradientStrip, 0, 0, 272, 199, 0, frameId * imgHeight1, imgWidth1, imgHeight1);
 }
-
-

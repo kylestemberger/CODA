@@ -48,13 +48,12 @@ class CodaProcessor : public juce::AudioProcessor {
     void getStateInformation(juce::MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
     
-    juce::AudioVisualiserComponent waveViewer;
-    
-    
-
-
-    
-    
+    enum
+    {
+        fftOrder  = 11,             // [1]
+        fftSize   = 1 << fftOrder,  // [2]
+        scopeSize = 512             // [3]
+    };
     
     struct FilterStage {
         /**
@@ -161,9 +160,38 @@ class CodaProcessor : public juce::AudioProcessor {
     LambdaParameterListener filter_stages_listener_;
     
 
+    juce::dsp::FFT forwardFFT;                      // [4]
+    juce::dsp::WindowingFunction<float> window;     // [5]
+ 
+    float fifo [fftSize];                           // [6]
+    float fftData [2 * fftSize];                    // [7]
+    int fifoIndex = 0;                              // [8]
+    bool nextFFTBlockReady = false;                 // [9]
+    float scopeData [scopeSize];                    // [10]
+    
+    void pushNextSampleIntoFifo (float sample) noexcept
+    {
+        // if the fifo contains enough data, set a flag to say
+        // that the next frame should now be rendered..
+        if (fifoIndex == fftSize)               // [11]
+        {
+            if (! nextFFTBlockReady)            // [12]
+            {
+                juce::zeromem (fftData, sizeof (fftData));
+                memcpy (fftData, fifo, sizeof (fifo));
+                nextFFTBlockReady = true;
+            }
+ 
+            fifoIndex = 0;
+        }
+ 
+        fifo[fifoIndex++] = sample;             // [12]
+    }
+    
+    void drawNextFrameOfSpectrum();
+    
 private:
     
-
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CodaProcessor)
 };

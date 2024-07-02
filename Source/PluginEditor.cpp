@@ -8,11 +8,12 @@
 CodaEditor::CodaEditor(CodaProcessor& p)
     : AudioProcessorEditor(&p), processor_(p)
 {
-   centerSlider.setRange(20.0f, 20000.0f, 1.0f);
-   centerSlider.setSliderStyle(juce::Slider::LinearHorizontal);
+    startTimerHz(10);
+    
+   centerSlider.setSliderStyle(juce::Slider::LinearBar);
    centerSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
    centerSlider.addListener (this);
-   centerSlider.setSkewFactor(0.2);
+   //centerSlider.setSkewFactorFromMidPoint(800.0);
    centerSlider.setTextValueSuffix("hz");
    centerSlider.setDoubleClickReturnValue(true, 130.0f);
    centerSlider.setColour(juce::Slider::thumbColourId, juce::Colours::whitesmoke);
@@ -47,11 +48,6 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     from0 = processor_.parameters_.getParameter("filter_stages")->convertFrom0to1(amountValue);
     gradientSlider.setValue(from0);
   
-   addAndMakeVisible(processor_.waveViewer);
-   processor_.waveViewer.setOpaque(false);
-   processor_.waveViewer.setBounds(140, 248, 272, 40);
-   processor_.waveViewer.setColours(juce::Colours::white.withAlpha(0.0f), juce::Colours::white);
-   
    // The focus dial
    addAndMakeVisible(focusSlider);
    focusSlider.setRange(0.5f, 20.0f, 0.5f);
@@ -75,12 +71,16 @@ CodaEditor::CodaEditor(CodaProcessor& p)
 CodaEditor::~CodaEditor() 
 {
     centerSlider.setLookAndFeel(nullptr);
+    
+    stopTimer();
 }
 
 void CodaEditor::paint(juce::Graphics& g)
 {
     background = juce::ImageCache::getFromMemory(BinaryData::CC_Backplate2_png, BinaryData::CC_Backplate2_pngSize);
     g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), juce::RectanglePlacement::stretchToFit);
+    
+    drawFrame(g);
 }
 
 void CodaEditor::resized()
@@ -88,7 +88,7 @@ void CodaEditor::resized()
 {
     auto compX = getWidth() * 0.24;
     auto compY = getHeight() * 0.25;
-    auto compWidth = getWidth() * 0.59;
+    auto compWidth = getWidth() * 0.495;
     auto compHeight = getHeight() * 0.335;
     centerSlider.setBounds(compX, compY, compWidth, compHeight);
     
@@ -122,5 +122,34 @@ void CodaEditor::sliderValueChanged (juce::Slider *slider)
     if (slider == &centerSlider)
     {
         processor_.filter_frequency_ = centerSlider.getValue();
+    }
+}
+
+void CodaEditor::timerCallback()
+{
+    if (processor_.nextFFTBlockReady)
+    {
+        processor_.drawNextFrameOfSpectrum();
+        processor_.nextFFTBlockReady = false;
+        repaint();
+    }
+}
+
+void CodaEditor::drawFrame (juce::Graphics& g)
+{
+    for (int i = 1; i < processor_.scopeSize; ++i)
+    {
+        int width  = getWidth() * 0.53;
+        int height = getHeight() * 0.396;
+        int x = getWidth() * 0.24;
+        int y = getHeight() * 0.185;
+        
+        g.setColour(juce::Colours::white);
+        //g.drawRect(x, y, width, height);
+
+        g.drawLine ({ (float) juce::jmap (i - 1, 0, processor_.scopeSize - 1, x, width + x),
+                              juce::jmap (processor_.scopeData[i - 1], 0.0f, 1.0f, (float) height + (float) y, (float) y),
+                      (float) juce::jmap (i,     0, processor_.scopeSize - 1, x, width + x),
+                              juce::jmap (processor_.scopeData[i],     0.0f, 1.0f, (float) height + (float) y, (float) y), });
     }
 }
