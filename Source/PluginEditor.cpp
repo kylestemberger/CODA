@@ -8,7 +8,7 @@
 CodaEditor::CodaEditor(CodaProcessor& p)
     : AudioProcessorEditor(&p), processor_(p)
 {
-    startTimerHz(10);
+    startTimerHz(60);
     
    centerSlider.setSliderStyle(juce::Slider::LinearBar);
    centerSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);

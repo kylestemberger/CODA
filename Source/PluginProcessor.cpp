@@ -443,7 +443,12 @@ void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         auto* channelData = buffer.getReadPointer (0);
 
         for (auto i = 0; i < buffer.getNumSamples(); ++i)
-            pushNextSampleIntoFifo (channelData[i]);
+        {
+            if (buffer.getMagnitude(0, buffer.getNumSamples() != 0.0f))
+            {
+                pushNextSampleIntoFifo (channelData[i]);
+            }
+        }
     }
 }
 
