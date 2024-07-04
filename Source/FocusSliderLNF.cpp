@@ -29,7 +29,7 @@ void FocusSliderLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, i
 
         int imgWidth = FocusKnob.getWidth();
         int imgHeight = FocusKnob.getHeight() / frames;
-        g.drawImage(FocusKnob, 0, 0, imgWidth, imgHeight, 0, frameId * imgHeight, imgWidth, imgHeight);
+        g.drawImage(FocusKnob, 0, 0, width, height, 0, frameId * imgHeight, imgWidth, imgHeight);
     }
     else
     {

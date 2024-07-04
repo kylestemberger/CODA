@@ -30,7 +30,7 @@ void CodaSliderLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, in
         int imgWidth = AmountKnob.getWidth();
         int imgHeight = AmountKnob.getHeight() / frames;
         
-        g.drawImage(AmountKnob, 0, 0, imgWidth, imgHeight, 0, frameId * imgHeight, imgWidth, imgHeight);
+        g.drawImage(AmountKnob, 0, 0, width, height, 0, frameId * imgHeight, imgWidth, imgHeight);
     }
 }
 

@@ -97,11 +97,11 @@ void CodaEditor::resized()
     compHeight = getHeight() * 0.4;
     gradientSlider.setBounds(compX, compY, compWidth, compHeight);
     
-    compX = getWidth() * 0.16;
-    compY = getHeight() * 0.72;
-    compWidth = getWidth() * 0.35;
+    compX = getWidth() * 0.24;
+    compY = getHeight() * 0.76;
+    compWidth = getWidth() * 0.26;
     amountSlider.setBounds(compX, compY, compWidth, compWidth);
-    compX += compWidth;
+    compX += compWidth * 1.1;
     focusSlider.setBounds(compX, compY, compWidth, compWidth);
 }
 
