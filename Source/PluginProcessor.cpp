@@ -21,7 +21,7 @@ constexpr char smoothing_interval_param_name[] = "smoothing_interval";
  * between the old and the new values over the course of this time span to
  * prevent clicks.
  */
-constexpr float filter_smoothing_secs = 1.0f;
+constexpr float filter_smoothing_secs = 0.1f;
 
 /**
  * The default filter resonance. This value should minimize the amount of
