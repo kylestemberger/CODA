@@ -22,20 +22,25 @@ public:
         g.drawLine(0.0f, height, width, height);
 
         // black value bar
-        g.setColour(juce::Colours::black.withAlpha(0.35f));
+        g.setColour(juce::Colours::black.withAlpha(0.25f));
         auto rectX = slider.getPositionOfValue(slider.getValue()) - width * 0.05f;
         juce::Rectangle<float> blackBlock (static_cast<float>(rectX),
                                            1.0f,
                                            width * 0.1f,
                                            static_cast<float>(height) - height * 0.02f);
-        g.fillRect(blackBlock);
         
-        // white border
-        g.setColour(juce::Colours::whitesmoke.withAlpha(0.05f));
-        g.drawRect(static_cast<float>(rectX - 1),
-                   0.0f,
-                   width * 0.1f + 1,
-                   static_cast<float>(height) - height * 0.02f);
+        juce::ColourGradient gradient(juce::Colours::black.withAlpha(0.2f), blackBlock.getX(), blackBlock.getY(), juce::Colours::black.withAlpha(0.7f), blackBlock.getRight(), blackBlock.getBottom(), false);
+
+        g.setGradientFill(gradient);
+        g.fillRoundedRectangle(blackBlock, 10.0f);
+        g.fillRect(blackBlock.withHeight(10).withY(blackBlock.getHeight() - 7));
+        
+//        // white border
+//        g.setColour(juce::Colours::whitesmoke.withAlpha(0.05f));
+//        g.drawRoundedRectangle(static_cast<float>(rectX - 1),
+//                   0.0f,
+//                   width * 0.1f + 1,
+//                   static_cast<float>(height) - height * 0.02f, 10.0f, 1.0f);
         
         // white thumb square
         g.setColour(juce::Colours::whitesmoke);
@@ -67,7 +72,7 @@ public:
 
         auto mult = height * 0.35;
         g.addTransform(juce::AffineTransform::rotation(juce::degreesToRadians(270.0f),
-                                                       blackBlock.getCentreX() + mult, blackBlock.getCentreY() + mult));
+                                                       blackBlock.getCentreX() + mult, blackBlock.getCentreY() + mult * 0.98f));
         g.drawFittedText(text, textBounds, juce::Justification::centred, 1);
     }
 };

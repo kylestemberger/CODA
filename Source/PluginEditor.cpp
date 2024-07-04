@@ -84,7 +84,6 @@ void CodaEditor::paint(juce::Graphics& g)
 }
 
 void CodaEditor::resized()
-
 {
     auto compX = getWidth() * 0.24;
     auto compY = getHeight() * 0.25;
