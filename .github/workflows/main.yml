@@ -1,9 +1,9 @@
 name: Build Pipeline
 
 on:
-  pull_request:
+  push:
     branches:
-      - production
+      - main
 
 jobs:
   build-mac:
