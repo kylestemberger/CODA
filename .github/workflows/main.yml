@@ -49,7 +49,7 @@ jobs:
 
       - name: Build Plugin Mac AU & VST3
         run: |
-          cd Coda/Builds/MacOSX/CodaBuilds
+          cd CODA/Builds/MacOSX/CodaBuilds
           xcodebuild -project "Coda.xcodeproj" -scheme "CodaExternalDSP - All" -configuration Release
 
       - name: Validate Mac AU
