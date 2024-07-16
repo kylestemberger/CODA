@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          submodules: recursive
 
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -52,42 +49,42 @@ jobs:
 
       - name: Build Plugin Mac AU & VST3
         run: |
-          cd viator-duplex-comp/Builds/MacOSX
-          xcodebuild -project "viator-duplex-comp.xcodeproj" -scheme "viator-duplex-comp - All" -configuration Release
+          cd CodaExternalDSP/Builds/MacOSX
+          xcodebuild -project "CodaExternalDSP.xcodeproj" -scheme "CodaExternalDSP - All" -configuration Release
 
       - name: Validate Mac AU
         run: |
           sudo killall -9 AudioComponentRegistrar
           sudo killall -9 coreaudiod
-          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/Components/viator-duplex-comp.component || exit 1
+          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component || exit 1
 
       - name: Validate Mac VST3
         run: |
           sudo killall -9 AudioComponentRegistrar
           sudo killall -9 coreaudiod
-          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/VST3/viator-duplex-comp.vst3 || exit 1
+          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3 || exit 1
 
       - name: Delete .a files
-        run: rm -R viator-duplex-comp/Builds/MacOSX/build/Release/libviator-duplex-comp.a
+        run: rm -R CodaExternalDSP/Builds/MacOSX/build/Release/libCodaExternalDSP.a
 
       - name: Sign Mac Builds
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
         run: |
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/viator-duplex-comp.component  || exit 1
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/viator-duplex-comp.vst3  || exit 1
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
 
       - name: Zip Mac Builds
         run: |
-          zip -r viator-duplex-comp-au.zip ~/Library/Audio/Plug-Ins/Components/viator-duplex-comp.component  || exit 1
-          zip -r viator-duplex-comp-vst3.zip ~/Library/Audio/Plug-Ins/VST3/viator-duplex-comp.vst3  || exit 1
+          zip -r CodaExternalDSP-au.zip ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
+          zip -r CodaExternalDSP-vst3.zip ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
 
       - name: Sign Mac Zips
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
         run: |
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp viator-duplex-comp-au.zip  || exit 1
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp viator-duplex-comp-vst3.zip  || exit 1
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-au.zip  || exit 1
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-vst3.zip  || exit 1
 
       - name: Notarize Mac Zips
         env:
@@ -95,17 +92,17 @@ jobs:
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
           TEAM_ID: ${{ secrets.TEAM_ID }}
         run: |
-          xcrun notarytool submit viator-duplex-comp-au.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
-          xcrun notarytool submit viator-duplex-comp-vst3.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
+          xcrun notarytool submit CodaExternalDSP-au.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
+          xcrun notarytool submit CodaExternalDSP-vst3.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
 
       - name: Upload Mac AU
         uses: actions/upload-artifact@v3
         with:
-          name: Mac-viator-duplex-comp-AU-Artifact
+          name: Mac-CodaExternalDSP-AU-Artifact
           path: ~/Library/Audio/Plug-Ins/Components/
 
       - name: Upload Mac VST3
         uses: actions/upload-artifact@v3
         with:
-          name: Mac-viator-duplex-comp-VST3-Artifact
+          name: Mac-CodaExternalDSP-VST3-Artifact
           path: ~/Library/Audio/Plug-Ins/VST3/
