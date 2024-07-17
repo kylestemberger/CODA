@@ -54,9 +54,6 @@ jobs:
           cd Builds/MacOSX/CodaBuilds
           xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
 
-      - name: Delete .a files
-        run: rm -R Coda/Builds/MacOSX/build/Release/libCodaExternalDSP.a
-
       - name: Sign Mac Builds
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
