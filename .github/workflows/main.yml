@@ -42,13 +42,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Download Pluginval
-        run: |
-          mkdir Pluginval
-          cd Pluginval
-          curl -L "https://github.com/Tracktion/pluginval/releases/latest/download/pluginval_macOS.zip" -o pluginval.zip
-          unzip pluginval
-
       - name: Build Plugin Mac AU & VST3
         run: |
           cd Builds/MacOSX/CodaBuilds
