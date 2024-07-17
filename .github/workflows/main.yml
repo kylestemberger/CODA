@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-         submodules: recursive
+          submodules: recursive
 
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -25,7 +25,7 @@ jobs:
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
-          # import certificate and provisioning profile from secrets
+          # import certificate from secrets
           echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
 
           # create temporary keychain
@@ -35,54 +35,57 @@ jobs:
 
           # import certificate to keychain
           security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
-          security list-keychain -d user -s $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH $(security list-keychains -d user | sed 's/[""]//g')
 
-      - name: Set up Xcode
+          # Verify that the certificate was imported correctly
+          security find-identity -p codesigning $KEYCHAIN_PATH
+
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "20"
 
-      - name: Build Plugin Mac AU & VST3
-        run: |
-          cd Builds/MacOSX/CodaBuilds
-          xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
-
-      - name: Sign Mac Builds
-        env:
-          HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
-        run: |
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
-
-      - name: Zip Mac Builds
-        run: |
-          zip -r CodaExternalDSP-au.zip ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
-          zip -r CodaExternalDSP-vst3.zip ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
-
-      - name: Sign Mac Zips
-        env:
-          HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
-        run: |
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-au.zip  || exit 1
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-vst3.zip  || exit 1
-
-      - name: Notarize Mac Zips
-        env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
-          TEAM_ID: ${{ secrets.TEAM_ID }}
-        run: |
-          xcrun notarytool submit CodaExternalDSP-au.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
-          xcrun notarytool submit CodaExternalDSP-vst3.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
-
-      - name: Upload Mac AU
-        uses: actions/upload-artifact@v3
-        with:
-          name: Mac-CodaExternalDSP-AU-Artifact
-          path: ~/Library/Audio/Plug-Ins/Components/
-
-      - name: Upload Mac VST3
-        uses: actions/upload-artifact@v3
-        with:
-          name: Mac-CodaExternalDSP-VST3-Artifact
-          path: ~/Library/Audio/Plug-Ins/VST3/
+#      - name: Build Plugin Mac AU & VST3
+#        run: |
+#          cd Builds/MacOSX/CodaBuilds
+#          xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
+#
+#      - name: Sign Mac Builds
+#        env:
+#          HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
+#        run: |
+#          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
+#          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
+#
+#      - name: Zip Mac Builds
+#        run: |
+#          zip -r CodaExternalDSP-au.zip ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component  || exit 1
+#          zip -r CodaExternalDSP-vst3.zip ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3  || exit 1
+#
+#      - name: Sign Mac Zips
+#        env:
+#          HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
+#        run: |
+#          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-au.zip  || exit 1
+#          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-vst3.zip  || exit 1
+#
+#      - name: Notarize Mac Zips
+#        env:
+#          APPLE_ID: ${{ secrets.APPLE_ID }}
+#          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+#          TEAM_ID: ${{ secrets.TEAM_ID }}
+#        run: |
+#          xcrun notarytool submit CodaExternalDSP-au.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
+#          xcrun notarytool submit CodaExternalDSP-vst3.zip --apple-id "$APPLE_ID" --password "$APP_PASSWORD" --team-id "$TEAM_ID" --wait  || exit 1
+#
+#      - name: Upload Mac AU
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Mac-CodaExternalDSP-AU-Artifact
+#          path: ~/Library/Audio/Plug-Ins/Components/
+#
+#      - name: Upload Mac VST3
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Mac-CodaExternalDSP-VST3-Artifact
+#          path: ~/Library/Audio/Plug-Ins/VST3/
