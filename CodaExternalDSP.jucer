@@ -57,7 +57,7 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX/CodaBuilds" buildNumber="1.2">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="CodaExternalDSP"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="CodaExternalDSP" enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="CodaExternalDSP" enablePluginBinaryCopyStep="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
