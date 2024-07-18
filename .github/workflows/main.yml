@@ -107,6 +107,12 @@ jobs:
           security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
+          # Ensure the keychain is available in the environment
+          echo "Unlocking keychain"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
           codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-au.zip || exit 1
           codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp CodaExternalDSP-vst3.zip || exit 1
 
