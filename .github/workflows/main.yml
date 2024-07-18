@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: "20"
 
-      # - name: Build Plugin Mac AU & VST3
-      #   run: |
-      #     cd Builds/MacOSX/CodaBuilds
-      #     xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
+      - name: Build Plugin Mac AU & VST3
+        run: |
+          cd Builds/MacOSX/CodaBuilds
+          xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
 
       - name: Sign Mac Builds
         env:
