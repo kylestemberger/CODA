@@ -57,7 +57,6 @@ jobs:
 
           # sign components using full identity string
           FULL_IDENTITY_STRING="Developer ID Application: Kyle Stemberger (8SY577X9L5)"
-          cd CODA/Builds/MacOSX
           ls
           codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp CODA/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
           codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp CODA/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.vst3 || exit 1
