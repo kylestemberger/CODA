@@ -47,13 +47,18 @@ jobs:
           # import certificate to keychain
           security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH $(security list-keychain -d user | sed s/\"//g)
+          security list-keychains -s $KEYCHAIN_PATH
 
           # verify certificate import
           security find-identity -p codesigning -v
 
-          # sign components
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component || exit 1
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3 || exit 1
+          # set key partition list
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # sign components using full identity string
+          FULL_IDENTITY_STRING="Developer ID Application: Kyle Stemberger (8SY577X9L5)"
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component || exit 1
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3 || exit 1
 
       - name: Zip Mac Builds
         run: |
