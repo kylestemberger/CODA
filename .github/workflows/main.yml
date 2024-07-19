@@ -57,24 +57,22 @@ jobs:
 
           # sign components using full identity string
           FULL_IDENTITY_STRING="Developer ID Application: Kyle Stemberger (8SY577X9L5)"
-          cd Builds/MacOSX
-          ls
-          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp CODA/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
-          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp CODA/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.vst3 || exit 1
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.vst3 || exit 1
 
       - name: Create Installer Mac AU
         run: |
-          pkgbuild --root CODA/Builds/MacOSX/CodaBuilds/build/Release/ \
+          pkgbuild --root Builds/MacOSX/CodaBuilds/build/Release/ \
           --identifier com.HavenAudio.CODA \
-          --install-location CODA/Builds/MacOSX/CodaBuilds/build/Release/ \
+          --install-location Builds/MacOSX/CodaBuilds/build/Release/ \
           --version "1.0.3" \
           CodaExternalDSP-au.pkg
 
       - name: Create Installer Mac VST3
         run: |
-          pkgbuild --root CODA/Builds/MacOSX/CodaBuilds/build/Release/ \
+          pkgbuild --root Builds/MacOSX/CodaBuilds/build/Release/ \
           --identifier com.HavenAudio.CODA \
-          --install-location CODA/Builds/MacOSX/CodaBuilds/build/Release/ \
+          --install-location Builds/MacOSX/CodaBuilds/build/Release/ \
           --version "1.0.0" \
           CodaExternalDSP-vst3.pkg
 
