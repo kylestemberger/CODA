@@ -76,6 +76,21 @@ jobs:
           --version "1.0.0" \
           CodaExternalDSP-vst3.pkg
 
+      - name: Sign the Installer Packages
+        env:
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        run: |
+          security list-keychains
+          security find-identity -v -p basic $INSTALLER_KEYCHAIN_PATH
+          # Use the correct identity from the installer certificate to sign the package
+          xcrun notarytool store-credentials "notarytool-password" --apple-id "$APPLE_ID" --team-id "$TEAM_ID" --password "$APP_PASSWORD"
+          productsign --sign "Developer ID Installer: Kyle Stemberger (8SY577X9L5)" CodaExternalDSP-au.pkg CodaExternalDSP-au-signed.pkg
+          productsign --sign "Developer ID Installer: Kyle Stemberger (8SY577X9L5)" CodaExternalDSP-vst3.pkg CodaExternalDSP-vst3-signed.pkg
+          xcrun notarytool submit CodaExternalDSP-au-signed.pkg --keychain-profile "notarytool-password" --wait
+          xcrun notarytool submit CodaExternalDSP-vst3-signed.pkg --keychain-profile "notarytool-password" --wait
+
       - name: Upload AU Installer
         uses: actions/upload-artifact@v3
         with:
