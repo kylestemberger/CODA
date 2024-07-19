@@ -46,8 +46,12 @@ jobs:
 
           # import certificate to keychain
           security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
-          security list-keychain -d user -s $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH $(security list-keychain -d user | sed s/\"//g)
 
+          # verify certificate import
+          security find-identity -p codesigning -v
+
+          # sign components
           codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/CodaExternalDSP.component || exit 1
           codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/CodaExternalDSP.vst3 || exit 1
 
