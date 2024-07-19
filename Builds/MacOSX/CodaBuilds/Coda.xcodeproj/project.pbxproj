@@ -25,6 +25,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		020F1F08A4B9F4FD34FEFAFB /* include_juce_graphics_Harfbuzz.cpp */ = {isa = PBXBuildFile; fileRef = DB4A02C0487BEFF4A1DD0BC7; };
 		0353E84193DF65A0F78177ED /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = 684EF2A2A13EFCFE7D25A10F; };
 		0B8F9198206FF1B3AD2CFE8F /* include_juce_audio_utils.mm */ = {isa = PBXBuildFile; fileRef = ED65BDD8A7FA3780B4AAC85A; };
 		0C5FAC9640E2EE6C3030DB58 /* AudioUnit.framework */ = {isa = PBXBuildFile; fileRef = 92CEB931F5899B2EA0E856AD; };
@@ -53,6 +54,7 @@
 		73778C5CD3EC306AD7C87358 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = D3C2C70D585EC9C785FDAF17; };
 		7DCA816AFC969C3D0237129B /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = C357D964C98EC3D5090E1C2B; };
 		7E11EDF3DF627C3D4BE9F8E3 /* BinaryData.cpp */ = {isa = PBXBuildFile; fileRef = F4C4F94C71C4A22C8AFFC5E5; };
+		7F96C983BF9AF2C75F93E737 /* include_juce_core_CompilationTime.cpp */ = {isa = PBXBuildFile; fileRef = D8D4886F2EF3D44D236277DC; };
 		847982BB59B2BCCFFB8E8694 /* PluginProcessor.cpp */ = {isa = PBXBuildFile; fileRef = C3BA9B72D5024B3C61F00248; };
 		8A0B98A4DC9A76240B3E7230 /* include_juce_audio_plugin_client_AU_2.mm */ = {isa = PBXBuildFile; fileRef = 2A1F0423794831211E599D79; };
 		985506A9EA4833D0E70E98F8 /* Accelerate.framework */ = {isa = PBXBuildFile; fileRef = B2941222CE5C34F7810783B1; };
@@ -162,7 +164,9 @@
 		D3C2C70D585EC9C785FDAF17 /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		D414DBE1CBFBAF56B36D8A3C /* Standalone Plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodaExternalDSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D05392028170E8B7C023F /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		D8D4886F2EF3D44D236277DC /* include_juce_core_CompilationTime.cpp */ /* include_juce_core_CompilationTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_core_CompilationTime.cpp; path = ../../../JuceLibraryCode/include_juce_core_CompilationTime.cpp; sourceTree = SOURCE_ROOT; };
 		D946681F6845E1F52523D192 /* include_juce_audio_plugin_client_ARA.cpp */ /* include_juce_audio_plugin_client_ARA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_plugin_client_ARA.cpp; path = ../../../JuceLibraryCode/include_juce_audio_plugin_client_ARA.cpp; sourceTree = SOURCE_ROOT; };
+		DB4A02C0487BEFF4A1DD0BC7 /* include_juce_graphics_Harfbuzz.cpp */ /* include_juce_graphics_Harfbuzz.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_graphics_Harfbuzz.cpp; path = ../../../JuceLibraryCode/include_juce_graphics_Harfbuzz.cpp; sourceTree = SOURCE_ROOT; };
 		DCEBD59D661C4F47A0E9E109 /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		E19545B5567FAD5712CCC545 /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		E33532BCC6745C7F3C409CA5 /* FilterResponseGraph.h */ /* FilterResponseGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FilterResponseGraph.h; path = ../../../Source/FilterResponseGraph.h; sourceTree = SOURCE_ROOT; };
@@ -373,10 +377,12 @@
 				EBE81F3EF81D4AC79300B39B,
 				ED65BDD8A7FA3780B4AAC85A,
 				DCEBD59D661C4F47A0E9E109,
+				D8D4886F2EF3D44D236277DC,
 				27788CF83CBC7BE1F0AF0215,
 				1ABE271DBC5637ABE8F86E65,
 				7BF4502061EC673083BE0B06,
 				10E35E0F49FA976041538EFC,
+				DB4A02C0487BEFF4A1DD0BC7,
 				300D65CB49024F5A61B54472,
 				AD36AF1150826054FB95EB7F,
 				B04752A06A2617393133D2EC,
@@ -782,10 +788,12 @@
 				368274B573A2C9F1EB9C8026,
 				0B8F9198206FF1B3AD2CFE8F,
 				49EA2E3335CD84D5A38F3C3F,
+				7F96C983BF9AF2C75F93E737,
 				D0549DB039339FD055C4F88E,
 				B21BF25FD7B61FE0EFE07FB0,
 				A9C5855104149C866C94857C,
 				FB13B9D51FCCEABA4946895A,
+				020F1F08A4B9F4FD34FEFAFB,
 				329F8FA5E2DAB361DA7F7923,
 				31A6FF54B558A6BD2C773613,
 				D009973E2D484761D468F9C9,
@@ -858,9 +866,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -936,6 +942,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -944,7 +951,7 @@
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lCodaExternalDSP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
@@ -969,9 +976,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1048,6 +1053,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1057,7 +1063,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
@@ -1092,9 +1098,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1171,6 +1175,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1178,7 +1183,7 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				SKIP_INSTALL = YES;
@@ -1203,9 +1208,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1281,6 +1284,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1290,7 +1294,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
@@ -1314,9 +1318,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1392,6 +1394,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1400,7 +1403,7 @@
 				INFOPLIST_FILE = Info-VST3_Manifest_Helper.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
@@ -1473,9 +1476,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1551,6 +1552,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1560,7 +1562,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lCodaExternalDSP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
@@ -1585,9 +1587,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1664,6 +1664,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1673,7 +1674,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
@@ -1707,9 +1708,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1786,6 +1785,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1796,7 +1796,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
@@ -1871,9 +1871,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -1950,6 +1948,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1958,7 +1957,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				SKIP_INSTALL = YES;
@@ -1983,9 +1982,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_DISPLAY_SPLASH_SCREEN=1",
-					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x7000c",
+					"JUCE_PROJUCER_VERSION=0x80000",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -2062,6 +2059,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/land00m/Documents/VST2_SDK",
 					"$(SRCROOT)/../../../JuceLibraryCode",
 					"$(SRCROOT)/../../../JUCE/modules",
 					"$(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -2072,7 +2070,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../../JuceLibraryCode $(SRCROOT)/../../../JUCE/modules $(SRCROOT)/../../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
