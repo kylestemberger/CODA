@@ -74,7 +74,7 @@ jobs:
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
         run: |
-        
+
           # sign components using full identity string
           FULL_IDENTITY_STRING="Developer ID Application: Kyle Stemberger (8SY577X9L5)"
           codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
@@ -108,8 +108,8 @@ jobs:
           xcrun notarytool store-credentials "notarytool-password" --apple-id "$APPLE_ID" --team-id "$TEAM_ID" --password "$APP_PASSWORD"
           productsign --sign "Developer ID Installer: Kyle Stemberger (8SY577X9L5)" CodaExternalDSP-au.pkg CodaExternalDSP-au-signed.pkg
           productsign --sign "Developer ID Installer: Kyle Stemberger (8SY577X9L5)" CodaExternalDSP-vst3.pkg CodaExternalDSP-vst3-signed.pkg
-          xcrun notarytool submit CodaExternalDSP-au-signed.pkg --keychain-profile "notarytool-password" --wait
-          xcrun notarytool submit CodaExternalDSP-vst3-signed.pkg --keychain-profile "notarytool-password" --wait
+          # xcrun notarytool submit CodaExternalDSP-au-signed.pkg --keychain-profile "notarytool-password" --wait
+          # xcrun notarytool submit CodaExternalDSP-vst3-signed.pkg --keychain-profile "notarytool-password" --wait
 
       - name: Upload AU Installer
         uses: actions/upload-artifact@v3
@@ -122,4 +122,3 @@ jobs:
         with:
           name: Mac-Installer-VST3
           path: CodaExternalDSP-vst3.pkg
-
