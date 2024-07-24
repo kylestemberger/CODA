@@ -66,7 +66,7 @@ jobs:
 
       - name: Build Plugin Mac AU & VST3
         run: |
-          cd sample/JUCESample/Builds/MacOSX/CodaBuilds
+          cd samples/JUCESample/Builds/MacOSX/CodaBuilds
           xcodebuild -project "Coda.xcodeproj" -scheme "Coda - All" -configuration Release
 
       - name: Sign Mac Builds
@@ -75,22 +75,22 @@ jobs:
         run: |
           # sign components using full identity string
           FULL_IDENTITY_STRING="Developer ID Application: Kyle Stemberger (8SY577X9L5)"
-          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
-          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.vst3 || exit 1
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.component || exit 1
+          codesign --deep --force --options=runtime --sign "$FULL_IDENTITY_STRING" --timestamp samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/CodaExternalDSP.vst3 || exit 1
 
       - name: Create Installer Mac AU
         run: |
-          pkgbuild --root sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
+          pkgbuild --root samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
           --identifier com.HavenAudio.CODA \
-          --install-location sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
+          --install-location samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
           --version "1.0.3" \
           CodaExternalDSP-au.pkg
 
       - name: Create Installer Mac VST3
         run: |
-          pkgbuild --root sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
+          pkgbuild --root samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
           --identifier com.HavenAudio.CODA \
-          --install-location sample/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
+          --install-location samples/JUCESample/Builds/MacOSX/CodaBuilds/build/Release/ \
           --version "1.0.0" \
           CodaExternalDSP-vst3.pkg
 
