@@ -1,0 +1,28 @@
+var struct_l_s_customer =
+[
+    [ "email", "struct_l_s_customer.html#aa92dd14079f78db3f2d68ebf8c089292", null ],
+    [ "setEmail", "struct_l_s_customer.html#ad5e0366c6dfd878e4ec0e6338420a656", null ],
+    [ "firstName", "struct_l_s_customer.html#a4ded2d12589dbcad5e69a90724ce2221", null ],
+    [ "setFirstName", "struct_l_s_customer.html#a6acfbcd4091f629a896c3f50cbb97bb2", null ],
+    [ "lastName", "struct_l_s_customer.html#aab1daed9bfcf5675dea3ddd66d12dec6", null ],
+    [ "setLastName", "struct_l_s_customer.html#af16b77affc4d56fc94c638f588cd0ef7", null ],
+    [ "company", "struct_l_s_customer.html#a38f7c6017a3709d98f189763e431fd1c", null ],
+    [ "setCompany", "struct_l_s_customer.html#aac271fd7d1ed1748da025df5a797d65c", null ],
+    [ "phone", "struct_l_s_customer.html#a4153b3bcc449c0889bd34a50e82e846e", null ],
+    [ "setPhone", "struct_l_s_customer.html#a74aaa62c6710877969727fbbe2fafa9c", null ],
+    [ "address", "struct_l_s_customer.html#a30d089b980cd37d35e4726a1bc101845", null ],
+    [ "setAddress", "struct_l_s_customer.html#a63a6941f8a9ce6b34b91178d46aa60be", null ],
+    [ "city", "struct_l_s_customer.html#a4653c15a14c90e1dc34c03ceae0bd786", null ],
+    [ "setCity", "struct_l_s_customer.html#ac6b517e124d6f2a5be55238310f6d184", null ],
+    [ "state", "struct_l_s_customer.html#ad22312e38c712ca296a9ef8d29cc7516", null ],
+    [ "setState", "struct_l_s_customer.html#a100bbc4007232781a95bd3633d40b64c", null ],
+    [ "country", "struct_l_s_customer.html#a817b5e5948edcba74dd94d9a0120cebf", null ],
+    [ "setCountry", "struct_l_s_customer.html#ab810669594cb93cba8dd063afd94690a", null ],
+    [ "postcode", "struct_l_s_customer.html#ab2beb7c618a000b919b1334f3fe6d672", null ],
+    [ "setPostcode", "struct_l_s_customer.html#a3ff25d8c9ce9db69a01ec0a4a730c943", null ],
+    [ "reference", "struct_l_s_customer.html#a78303588de4d3ede35178fac052e5b6d", null ],
+    [ "setReference", "struct_l_s_customer.html#a9320ee873ac65c49a1010c3ae8a00cef", null ],
+    [ "metadata", "struct_l_s_customer.html#af53e5dd20913d4b42dff97118ed788e6", null ],
+    [ "setMetadata", "struct_l_s_customer.html#a20806b11314b3ad5d8daeb6160ed0caf", null ],
+    [ "inner", "struct_l_s_customer.html#ae64a28a9bd6e6a65007df53e02e0dd49", null ]
+];

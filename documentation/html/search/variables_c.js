@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['m_5fbuild_0',['m_build',['../class_license_spring_1_1_version.html#ac438aecdc47b5feec05aef6903d0c0d0',1,'LicenseSpring::Version']]],
+  ['m_5fconfig_1',['m_config',['../class_license_spring_1_1_base_manager.html#acd7092e7ff44ddd9d7af465776ff6ccd',1,'LicenseSpring::BaseManager']]],
+  ['m_5fcurrentlicense_2',['m_currentLicense',['../class_license_spring_1_1_base_manager.html#ac889482940474b07e4747a53bcb61131',1,'LicenseSpring::BaseManager']]],
+  ['m_5fdatahandler_3',['m_dataHandler',['../class_license_spring_1_1_base_manager.html#a076580df644af8ba6929e15ea6985b93',1,'LicenseSpring::BaseManager']]],
+  ['m_5fdelimeter_4',['m_delimeter',['../class_license_spring_1_1_version_base.html#a14b41993c33b4331ad89d0518a371495',1,'LicenseSpring::VersionBase']]],
+  ['m_5ferrorcode_5',['m_errorCode',['../class_license_spring_1_1_license_spring_exception.html#a5581fa7c7b5da268e75cf70725717fef',1,'LicenseSpring::LicenseSpringException']]],
+  ['m_5ffilename_6',['m_fileName',['../class_license_spring_1_1_license_file_storage_base.html#a155975be937ca639aa371fb4d8d5ba9f',1,'LicenseSpring::LicenseFileStorageBase']]],
+  ['m_5ffolderpath_7',['m_folderPath',['../class_license_spring_1_1_license_file_storage_base.html#a92ad6afb4334ff9fcba1a0dca46d4d10',1,'LicenseSpring::LicenseFileStorageBase']]],
+  ['m_5fkey_8',['m_key',['../class_license_spring_1_1_crypto_provider.html#a74ed9a4a8cfc248f3b5de5c5475cbc66',1,'LicenseSpring::CryptoProvider']]],
+  ['m_5fmajor_9',['m_major',['../class_license_spring_1_1_version_base.html#a2278394d8b3d1ac9dc13ede8e99534a6',1,'LicenseSpring::VersionBase']]],
+  ['m_5fminor_10',['m_minor',['../class_license_spring_1_1_version_base.html#a968a7299b8360bc718b0c227a8fe72bd',1,'LicenseSpring::VersionBase']]],
+  ['m_5fpatch_11',['m_patch',['../class_license_spring_1_1_version.html#abdc7aed1a1efac91fd8f9ceea26a5bf5',1,'LicenseSpring::Version']]],
+  ['m_5fplicenseservice_12',['m_pLicenseService',['../class_license_spring_1_1_base_manager.html#a5adea26717dd76156ffaf9921ef797f1',1,'LicenseSpring::BaseManager']]],
+  ['m_5fsalt_13',['m_salt',['../class_license_spring_1_1_crypto_provider.html#a54767f5132b7f76bc97c053cffb169b4',1,'LicenseSpring::CryptoProvider']]],
+  ['maxconsumption_14',['maxConsumption',['../struct_l_s_license_feature.html#a36a4acd27a3638fb48b98ffa312555ef',1,'LSLicenseFeature']]],
+  ['maxdaysremainingvalue_15',['MaxDaysRemainingValue',['../class_license_spring_1_1_license.html#a75cfe2acb2b492e4816433d1ff61a776',1,'LicenseSpring::License']]],
+  ['maxoverages_16',['maxOverages',['../struct_l_s_license_feature.html#aded934f0176c6b2619c66b2cd2c42537',1,'LSLicenseFeature']]],
+  ['metadata_17',['metadata',['../struct_l_s_customer.html#af53e5dd20913d4b42dff97118ed788e6',1,'LSCustomer::metadata'],['../struct_l_s_license_feature.html#aeddc8cf0349a58aa3b51ba48a285de23',1,'LSLicenseFeature::metadata'],['../struct_l_s_product_details.html#a5a92464225074e9353d0a8f7177602c4',1,'LSProductDetails::metadata']]]
+];
