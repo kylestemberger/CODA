@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-mac:
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -60,7 +60,7 @@ jobs:
           security find-identity -v -p basic $RUNNER_TEMP/app-signing-installer.keychain-db
 
       - name: Set up Xcode
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
 
@@ -110,13 +110,13 @@ jobs:
           xcrun notarytool submit CodaExternalDSP-vst3-signed.pkg --keychain-profile "notarytool-password" --wait
 
       - name: Upload AU Installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Mac-Installer-AU
           path: CodaExternalDSP-au-signed.pkg
 
       - name: Upload VST3 Installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Mac-Installer-VST3
           path: CodaExternalDSP-vst3-signed.pkg
