@@ -1035,7 +1035,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				USE_HEADERMAP = NO;
@@ -1152,7 +1152,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
@@ -1671,7 +1671,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				USE_HEADERMAP = NO;
@@ -1788,7 +1788,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				USE_HEADERMAP = NO;
@@ -1915,7 +1915,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
@@ -2199,7 +2199,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/land00m/Documents/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../../../include $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto -lcurl -lssl";
+				OTHER_LDFLAGS = "-bundle -lCodaExternalDSP -lLicenseSpring -lcrypto.3 -lcurl.4 -lcrypto -lcurl -lssl.3 -lssl";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HavenAudio.Coda;
 				PRODUCT_NAME = "CodaExternalDSP";
 				USE_HEADERMAP = NO;

@@ -168,9 +168,8 @@ window (fftSize, juce::dsp::WindowingFunction<float>::hann) {
               parameters_.addParameterListener(filter_stages_param_name,
                                                &filter_stages_listener_);
     
-    //auto pConfiguration = appConfig.createLicenseSpringConfig();
-    //LicenseSpring::Configuration::ptr_t pConfiguration = appConfig.createLicenseSpringConfig();
-    //licenseManager = LicenseSpring::LicenseManager::create( appConfig.createLicenseSpringConfig() );
+    auto pConfiguration = appConfig.createLicenseSpringConfig();
+    licenseManager = LicenseSpring::LicenseManager::create( appConfig.createLicenseSpringConfig() );
 }
    
 CodaProcessor::~CodaProcessor() {}

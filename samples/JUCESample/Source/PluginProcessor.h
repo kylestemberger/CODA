@@ -6,6 +6,7 @@
 #include <juce_dsp/juce_dsp.h>
 #include <JuceHeader.h>
 #include <LicenseSpring/Configuration.h>
+#include <LicenseSpring/LicenseManager.h>
 #include "../../AppConfig.h"
 
 #include "utils.h"
@@ -48,7 +49,7 @@ class CodaProcessor : public juce::AudioProcessor {
     void getStateInformation(juce::MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
     
-    //LicenseSpring::LicenseManager::ptr_t licenseManager;
+    LicenseSpring::LicenseManager::ptr_t licenseManager;
     
     enum
     {
