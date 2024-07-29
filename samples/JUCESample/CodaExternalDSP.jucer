@@ -18,6 +18,8 @@
       <FILE id="se3BBX" name="knobRelease.png" compile="0" resource="1" file="Source/Assets/knobRelease.png"/>
     </GROUP>
     <GROUP id="{AB593A30-1888-3DE4-3721-6027AB1B2A28}" name="Source">
+      <FILE id="gLdPe4" name="AppConfig.cpp" compile="1" resource="0" file="../AppConfig.cpp"/>
+      <FILE id="blysHa" name="AppConfig.h" compile="0" resource="0" file="../AppConfig.h"/>
       <GROUP id="{4C84478B-AD40-4F0D-926B-3D6A0586B13B}" name="laf">
         <FILE id="ZhBKWk" name="centerSliderLAF.h" compile="0" resource="0"
               file="Source/laf/centerSliderLAF.h"/>
@@ -55,13 +57,13 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX/CodaBuilds" buildNumber="1.2" externalLibraries="LicenseSpring&#10;crypto&#10;curl&#10;ssl"
-               postbuildCommand="bash ../../../copy_libs.sh">
+    <XCODE_MAC targetFolder="Builds/MacOSX" buildNumber="1.2" externalLibraries="LicenseSpring&#10;crypto&#10;curl&#10;ssl"
+               postbuildCommand="bash ../../copy_libs.sh">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="CodaExternalDSP" enablePluginBinaryCopyStep="0"
-                       headerPath="../../../../../include" libraryPath="../../../../../bin/static/Debug/"/>
+                       headerPath="../../../../include" libraryPath="../../../../bin/static/Debug/"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="CodaExternalDSP" enablePluginBinaryCopyStep="0"
-                       headerPath="../../../../../include" libraryPath="../../../../../bin/static/Release"/>
+                       headerPath="../../../../include" libraryPath="../../../../bin/static/Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="JUCE/modules"/>

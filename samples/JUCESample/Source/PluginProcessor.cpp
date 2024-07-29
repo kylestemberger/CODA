@@ -5,7 +5,6 @@
 #include "PluginEditor.h"
 
 
-
 using juce::uint32;
 
 constexpr char filter_settings_group_name[] = "filters";
@@ -168,14 +167,12 @@ forwardFFT (fftOrder),
 window (fftSize, juce::dsp::WindowingFunction<float>::hann) {
               parameters_.addParameterListener(filter_stages_param_name,
                                                &filter_stages_listener_);
-              }
-              
-
-
-
-
-
-
+    
+    //auto pConfiguration = appConfig.createLicenseSpringConfig();
+    //LicenseSpring::Configuration::ptr_t pConfiguration = appConfig.createLicenseSpringConfig();
+    //licenseManager = LicenseSpring::LicenseManager::create( appConfig.createLicenseSpringConfig() );
+}
+   
 CodaProcessor::~CodaProcessor() {}
 
 const juce::String CodaProcessor::getName() const {
@@ -495,8 +492,6 @@ bool CodaProcessor::hasEditor() const {
 }
 
 juce::AudioProcessorEditor* CodaProcessor::createEditor() {
-    // TODO: Add an editor at some point
-    // return new CodaEditor(*this);
     return new CodaEditor (*this);
 }
 

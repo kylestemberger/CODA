@@ -5,8 +5,8 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_dsp/juce_dsp.h>
 #include <JuceHeader.h>
-
-
+#include <LicenseSpring/Configuration.h>
+#include "../../AppConfig.h"
 
 #include "utils.h"
 
@@ -47,6 +47,8 @@ class CodaProcessor : public juce::AudioProcessor {
 
     void getStateInformation(juce::MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
+    
+    //LicenseSpring::LicenseManager::ptr_t licenseManager;
     
     enum
     {
@@ -191,7 +193,7 @@ class CodaProcessor : public juce::AudioProcessor {
     void drawNextFrameOfSpectrum();
     
 private:
-    
+    AppConfig appConfig { "CODA", "1.0" };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CodaProcessor)
 };

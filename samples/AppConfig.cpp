@@ -15,8 +15,8 @@ LicenseSpring::Configuration::ptr_t AppConfig::createLicenseSpringConfig() const
 
     // Provide your LicenseSpring credentials here, please keep them safe
     return LicenseSpring::Configuration::Create(
-        EncryptStr( "" ), // your LicenseSpring API key (UUID)
-        EncryptStr( "" ), // your LicenseSpring Shared key
-        EncryptStr( "" ), // product code that you specified in LicenseSpring for your application
+        EncryptStr( "cfb4af35-440d-491e-8fad-de85b120ea73" ), // your LicenseSpring API key (UUID)
+        EncryptStr( "Sug4TV6s.IhD8R9qzaA8vWSVMgkoz30Aj3CAr47Pt" ), // your LicenseSpring Shared key
+        EncryptStr( "QIQ" ), // product code that you specified in LicenseSpring for your application
         appName, appVersion, options );
 }
