@@ -11,6 +11,64 @@
 #include "laf/centerSliderLAF.h"
 #include <LicenseSpring/LicenseManager.h>
 
+class MyLookAndFeel : public juce::LookAndFeel_V4
+{
+public:
+    MyLookAndFeel()
+    {
+        setColour(juce::TextButton::buttonColourId, gray);
+        setColour(juce::TextButton::buttonOnColourId, lightGray);
+        setColour(juce::ComboBox::outlineColourId, lightGray);
+
+        setColour(juce::TextEditor::focusedOutlineColourId, text);
+        setColour(juce::TextEditor::backgroundColourId, gray);
+        
+        setColour(juce::Label::ColourIds::backgroundColourId, darkGray.withAlpha(0.8f));
+        setColour(juce::Label::ColourIds::textColourId, text);
+    }
+    
+    juce::Font getTextButtonFont(juce::TextButton&, int buttonHeight)
+    {
+        juce::FontOptions options ("Helvetica", juce::jmin (20.0f, (float) buttonHeight * 0.6f), juce::Font::FontStyleFlags::bold);
+        return juce::Font(options);
+    }
+    
+    juce::Font getLabelFont (juce::Label& label)
+    {
+        juce::FontOptions options ("Helvetica", juce::jmin (20.0f, (float) label.getHeight() * 0.6f), juce::Font::FontStyleFlags::bold);
+        return juce::Font(options);
+    }
+    
+    void drawTextEditorOutline (juce::Graphics& g, int width, int height, juce::TextEditor& textEditor)
+    {
+        juce::Rectangle<int> bounds (width, height); // modified
+        auto cornerSize = 6.0f; // modified
+
+        if (dynamic_cast<juce::AlertWindow*> (textEditor.getParentComponent()) == nullptr)
+        {
+            if (textEditor.isEnabled())
+            {
+                if (textEditor.hasKeyboardFocus (true) && !textEditor.isReadOnly())
+                {
+                    g.setColour (textEditor.findColour (juce::TextEditor::focusedOutlineColourId));
+                    g.drawRoundedRectangle(bounds.toFloat().reduced(0.5f, 0.5f), cornerSize, 1);  // modified
+                }
+                else
+                {
+                    g.setColour (textEditor.findColour (juce::TextEditor::outlineColourId));
+                    g.drawRoundedRectangle(bounds.toFloat().reduced(0.5f, 0.5f), cornerSize, 1);
+                }
+            }
+        }
+    }
+    
+private:
+    juce::Colour gray = juce::Colour(42, 42, 45);
+    juce::Colour darkGray = juce::Colour(17, 17, 20);
+    juce::Colour lightGray = juce::Colour(84, 84, 90);
+    juce::Colour text = juce::Colour(249, 250, 251);
+};
+
 class LogarithmicSlider : public juce::Slider
 {
 public:
@@ -65,6 +123,8 @@ public:
 private:
     CodaProcessor& processor_;
     
+    MyLookAndFeel myLAF;
+    
     juce::Image background;
     
     LogarithmicSlider centerSlider;
@@ -112,6 +172,8 @@ private:
     juce::Label labelInfo{{}, ""};
     juce::TextButton deactivateButton{"Dectivate"};
     juce::TextButton checkButton{"Check license"};
+    
+    juce::Label bgLabel;
 
 
     void activateKeyBased();

@@ -66,29 +66,23 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     addAndMakeVisible(centerSlider);
     
     // license stuff
+    addChildComponent(bgLabel);
+    bgLabel.setInterceptsMouseClicks(false, false);
+    
     addChildComponent( labelKeyBased );
-    addChildComponent( labelUserBased );
-    addChildComponent( labelUser );
     addChildComponent( labelKey );
-    addChildComponent( labelPassword );
+    labelKey.setJustificationType(juce::Justification::centred);
     addChildComponent( labelGetTrial );
-    addChildComponent( labelUser2 );
     addChildComponent( getTrialButton );
     addChildComponent( activateKeyButton );
-    addChildComponent( activateUserButton );
     addChildComponent( keyEditor );
-    addChildComponent( userEditor );
-    addChildComponent( passwordEditor );
-    addChildComponent( userEditor2 );
   
     addChildComponent( labelInfo );
     addChildComponent( deactivateButton );
     addChildComponent( checkButton );
+    
 
-    userEditor2.addListener( this );
-    userEditor.addListener( this );
     activateKeyButton.addListener( this );
-    activateUserButton.addListener( this );
     getTrialButton.addListener( this );
     deactivateButton.addListener( this );
     checkButton.addListener( this );
@@ -109,17 +103,18 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     else
         makeActivationVisible();
     
+    setLookAndFeel(&myLAF);
+    
     setSize (548 * mult, 735 * mult);
 }
 
 CodaEditor::~CodaEditor() 
 {
+    setLookAndFeel(nullptr);
+    
     centerSlider.setLookAndFeel(nullptr);
     
-    userEditor2.removeListener( this );
-    userEditor.removeListener( this );
     activateKeyButton.removeListener( this );
-    activateUserButton.removeListener( this );
     getTrialButton.removeListener( this );
     deactivateButton.removeListener( this );
     checkButton.removeListener( this );
@@ -157,35 +152,17 @@ void CodaEditor::resized()
     focusSlider.setBounds(compX, compY, compWidth, compWidth);
     
     // license stuff
-    int y = 40;
-    image.setBounds( ( getWidth() - 200 ) / 2, 40, 200, 110 );
-    y += 110 + 40;
-    int width = ( getWidth() - 80 ) / 3;
-    int column1X = 20;
-    int column2X = column1X * 2 + width;
-    int column3X = column1X + column2X + width;
-
-    labelKeyBased.setBounds( column1X, y, width, 20 );
-    labelKey.setBounds( column1X, y + 30, width, 20 );
-    keyEditor.setBounds( column1X, y + 60, width, 20 );
-    activateKeyButton.setBounds( column1X, y + 90, width, 20 );
-
-    labelUserBased.setBounds( column2X, y, width, 20 );
-    labelUser.setBounds( column2X, y+30, width, 20 );
-    userEditor.setBounds( column2X, y+60, width, 20 );
-    labelPassword.setBounds( column2X, y+90, width, 20 );
-    passwordEditor.setBounds( column2X, y+120, width, 20 );
-    activateUserButton.setBounds( column2X, y+150, width, 20 );
-
-    labelGetTrial.setBounds( column3X, y, width, 20 );
-    labelUser2.setBounds( column3X, y+30, width, 20 );
-    userEditor2.setBounds( column3X, y+60, width, 20 );
-    getTrialButton.setBounds( column3X, y+90, width, 20 );
-
+    auto compBounds = getLocalBounds().withSizeKeepingCentre(getWidth() * 0.5, getHeight() * 0.05);
+    keyEditor.setBounds( compBounds );
+    labelKey.setBounds(compBounds.withY(keyEditor.getY() - keyEditor.getHeight()));
+    activateKeyButton.setBounds(compBounds.withY(keyEditor.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
+    getTrialButton.setBounds(compBounds.withY(activateKeyButton.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
 
     labelInfo.setBounds( 20, 20, getWidth()-40, getHeight()-50 );
     deactivateButton.setBounds( 20, getHeight()-40, getWidth()/2 - 30, 20);
     checkButton.setBounds( getWidth() / 2, getHeight() - 40, getWidth() / 2 - 30, 20 );
+    
+    bgLabel.setBounds(getLocalBounds());
 }
 
 void CodaEditor::sliderValueChanged (juce::Slider *slider)
@@ -275,6 +252,7 @@ void CodaEditor::makeInfoVisible()
     passwordEditor.setVisible( false );
     userEditor2.setVisible( false );
     image.setVisible( false );
+    bgLabel.setVisible( false );
 
     labelInfo.setVisible( true );
     deactivateButton.setVisible( true );
@@ -287,6 +265,7 @@ void CodaEditor::makeActivationVisible()
     deactivateButton.setVisible( false );
     checkButton.setVisible( false );
 
+    bgLabel.setVisible( true );
     labelKeyBased.setVisible( true );
     labelUserBased.setVisible( true );
     labelUser.setVisible( true );
