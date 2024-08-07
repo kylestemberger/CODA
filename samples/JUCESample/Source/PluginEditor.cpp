@@ -219,6 +219,11 @@ void CodaEditor::timerCallback()
 
 void CodaEditor::drawFrame(juce::Graphics& g)
 {
+    // Ensure processor_.scopeSize and processor_.scopeData are valid
+    if (!(processor_.scopeSize > 0) ||
+        !processor_.audioInitialized.load())
+        return;
+    
     // Define the drawing region
     int width  = getWidth() * 0.53;
     int height = getHeight() * 0.396;
@@ -228,17 +233,20 @@ void CodaEditor::drawFrame(juce::Graphics& g)
     // Set the clipping region to the bounds of the drawing area
     g.reduceClipRegion(x, y, width, height);
 
-    // Ensure processor_.scopeSize and processor_.scopeData are valid
-    if (processor_.scopeSize <= 0)
-        return;
-
     // Draw the frequency response
     g.setColour(juce::Colours::white);
+    
     for (int i = 1; i < processor_.scopeSize; ++i)
     {
         // Ensure the data is within the expected range
         float prevValue = juce::jlimit(0.0f, 1.0f, processor_.scopeData[i - 1]);
         float currValue = juce::jlimit(0.0f, 1.0f, processor_.scopeData[i]);
+        
+        if (prevValue == 0.0f ||
+            prevValue == 1.0f ||
+            currValue == 0.0f ||
+            currValue == 1.0f)
+            return;
 
         g.drawLine(
             {

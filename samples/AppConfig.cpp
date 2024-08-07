@@ -10,7 +10,7 @@ LicenseSpring::Configuration::ptr_t AppConfig::createLicenseSpringConfig() const
     // options.enableVMDetection( true );
 
     // In order to connect to the LS FloatingServer set its address as following
-    options.setAlternateServiceURL( "http://localhost:8080" );
+    //options.setAlternateServiceURL( "http://localhost:8080" );
     // If you use FloatingServer v1.1.9 or earlier provide Product name instead of Product code
 
     // Provide your LicenseSpring credentials here, please keep them safe

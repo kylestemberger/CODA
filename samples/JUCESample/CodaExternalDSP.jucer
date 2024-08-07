@@ -57,7 +57,7 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" buildNumber="1.2" externalLibraries="LicenseSpring&#10;crypto.3&#10;curl.4&#10;crypto&#10;curl&#10;ssl.3&#10;ssl"
+    <XCODE_MAC targetFolder="Builds/MacOSX" buildNumber="1.2" externalLibraries="LicenseSpring&#10;curl.4&#10;crypto&#10;curl&#10;ssl"
                postbuildCommand="bash ../../copy_libs.sh">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="CodaExternalDSP" enablePluginBinaryCopyStep="0"

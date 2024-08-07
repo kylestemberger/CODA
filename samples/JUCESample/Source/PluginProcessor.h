@@ -49,6 +49,8 @@ class CodaProcessor : public juce::AudioProcessor {
     void getStateInformation(juce::MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
     
+    std::atomic<bool> audioInitialized {false};
+    
     LicenseSpring::LicenseManager::ptr_t licenseManager;
     
     enum

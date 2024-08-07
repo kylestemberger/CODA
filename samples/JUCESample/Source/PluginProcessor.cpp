@@ -275,6 +275,10 @@ void CodaProcessor::processBlockBypassed(
 
 void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                                     juce::MidiBuffer& /*midiMessages*/) {
+    
+    
+    audioInitialized.store(true);
+    
     juce::AudioBuffer<float> main_buffer = getBusBuffer(buffer, true, 0);
     juce::ScopedNoDenormals noDenormals;
 
