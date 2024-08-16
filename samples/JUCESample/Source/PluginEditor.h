@@ -156,7 +156,7 @@ private:
     juce::Label labelKeyBased{{}, "For key-based product enter"};
     juce::Label labelUserBased{{}, "For user-based product enter"};
     juce::Label labelGetTrial{{}, "Get trial"};
-    juce::Label labelUser{{}, "User"};
+    juce::Label labelUser{{}, "Email for trial"};
     juce::Label labelUser2{{}, "User"};
     juce::Label labelKey{{}, "Key"};
     juce::Label labelPassword{{}, "Password"};

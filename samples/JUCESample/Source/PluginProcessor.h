@@ -51,6 +51,8 @@ class CodaProcessor : public juce::AudioProcessor {
     
     std::atomic<bool> audioInitialized {false};
     
+    void setLicenseIsValid(bool licenseIsValid) { isLicenseValid.store(licenseIsValid); }
+    
     LicenseSpring::LicenseManager::ptr_t licenseManager;
     
     enum
@@ -197,6 +199,8 @@ class CodaProcessor : public juce::AudioProcessor {
     
 private:
     AppConfig appConfig { "CODA", "1.0" };
+    
+    std::atomic<bool> isLicenseValid {false};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CodaProcessor)
 };

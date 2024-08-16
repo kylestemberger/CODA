@@ -170,6 +170,16 @@ window (fftSize, juce::dsp::WindowingFunction<float>::hann) {
     
     auto pConfiguration = appConfig.createLicenseSpringConfig();
     licenseManager = LicenseSpring::LicenseManager::create( appConfig.createLicenseSpringConfig() );
+    
+    if (licenseManager->getCurrentLicense() != nullptr)
+    {
+        isLicenseValid.store(true);
+    }
+    
+    else
+    {
+        isLicenseValid.store(false);
+    }
 }
    
 CodaProcessor::~CodaProcessor() {}
@@ -278,6 +288,8 @@ void CodaProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     
     
     audioInitialized.store(true);
+    if (!isLicenseValid.load())
+        return;
     
     juce::AudioBuffer<float> main_buffer = getBusBuffer(buffer, true, 0);
     juce::ScopedNoDenormals noDenormals;

@@ -76,7 +76,9 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     addChildComponent( getTrialButton );
     addChildComponent( activateKeyButton );
     addChildComponent( keyEditor );
-  
+    addChildComponent( labelUser );
+    labelUser.setJustificationType(juce::Justification::centred);
+    addChildComponent( userEditor );
     addChildComponent( labelInfo );
     addChildComponent( deactivateButton );
     addChildComponent( checkButton );
@@ -156,9 +158,11 @@ void CodaEditor::resized()
     keyEditor.setBounds( compBounds );
     labelKey.setBounds(compBounds.withY(keyEditor.getY() - keyEditor.getHeight()));
     activateKeyButton.setBounds(compBounds.withY(keyEditor.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
-    getTrialButton.setBounds(compBounds.withY(activateKeyButton.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
+    labelUser.setBounds(compBounds.withY(activateKeyButton.getBottom() + getHeight() * 0.036).withX(labelKey.getX()));
+    userEditor.setBounds(compBounds.withY(labelUser.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
+    getTrialButton.setBounds(compBounds.withY(userEditor.getBottom() + getHeight() * 0.018).withX(keyEditor.getX()));
 
-    labelInfo.setBounds( 20, 20, getWidth()-40, getHeight()-50 );
+    //labelInfo.setBounds( 20, 20, getWidth()-40, getHeight()-50 );
     deactivateButton.setBounds( 20, getHeight()-40, getWidth()/2 - 30, 20);
     checkButton.setBounds( getWidth() / 2, getHeight() - 40, getWidth() / 2 - 30, 20 );
     
@@ -254,7 +258,7 @@ void CodaEditor::makeInfoVisible()
     image.setVisible( false );
     bgLabel.setVisible( false );
 
-    labelInfo.setVisible( true );
+    labelInfo.setVisible( false );
     deactivateButton.setVisible( true );
     checkButton.setVisible( true );
 }
@@ -311,6 +315,7 @@ void CodaEditor::activateKeyBased()
             {
                 updateLicenseFields();
                 makeInfoVisible();
+                processor_.setLicenseIsValid(true);
             }
         }
         else
@@ -369,8 +374,9 @@ void CodaEditor::getTrial()
 {
     try
     {
-        auto user = userEditor2.getText();
-        auto id = processor_.licenseManager->getTrialLicense( user.toStdString() );
+        //auto user = userEditor2.getText();
+        std::string user = "landonviator@gmail.com";
+        auto id = processor_.licenseManager->getTrialLicense( user );
         userEditor.setText( id.user().c_str() );
         passwordEditor.setText( id.password().c_str() );
         keyEditor.setText( id.key().c_str() );
