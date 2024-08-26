@@ -72,13 +72,13 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     addChildComponent( labelKeyBased );
     addChildComponent( labelKey );
     labelKey.setJustificationType(juce::Justification::centred);
-    addChildComponent( labelGetTrial );
-    addChildComponent( getTrialButton );
+    //addChildComponent( labelGetTrial );
+    //addChildComponent( getTrialButton );
     addChildComponent( activateKeyButton );
     addChildComponent( keyEditor );
-    addChildComponent( labelUser );
-    labelUser.setJustificationType(juce::Justification::centred);
-    addChildComponent( userEditor );
+    //addChildComponent( labelUser );
+    //labelUser.setJustificationType(juce::Justification::centred);
+    //addChildComponent( userEditor );
     addChildComponent( labelInfo );
     addChildComponent( deactivateButton );
     addChildComponent( checkButton );
