@@ -71,10 +71,12 @@ CodaEditor::CodaEditor(CodaProcessor& p)
     
     addChildComponent( labelKeyBased );
     addChildComponent( labelKey );
+    labelKey.setText("Key", juce::dontSendNotification);
     labelKey.setJustificationType(juce::Justification::centred);
     //addChildComponent( labelGetTrial );
     //addChildComponent( getTrialButton );
     addChildComponent( activateKeyButton );
+    activateKeyButton.setButtonText("Activate!");
     addChildComponent( keyEditor );
     //addChildComponent( labelUser );
     //labelUser.setJustificationType(juce::Justification::centred);

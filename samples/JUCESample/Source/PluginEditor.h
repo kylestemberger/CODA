@@ -27,18 +27,6 @@ public:
         setColour(juce::Label::ColourIds::textColourId, text);
     }
     
-    juce::Font getTextButtonFont(juce::TextButton&, int buttonHeight)
-    {
-        juce::FontOptions options ("Helvetica", juce::jmin (20.0f, (float) buttonHeight * 0.6f), juce::Font::FontStyleFlags::bold);
-        return juce::Font(options);
-    }
-    
-    juce::Font getLabelFont (juce::Label& label)
-    {
-        juce::FontOptions options ("Helvetica", juce::jmin (20.0f, (float) label.getHeight() * 0.6f), juce::Font::FontStyleFlags::bold);
-        return juce::Font(options);
-    }
-    
     void drawTextEditorOutline (juce::Graphics& g, int width, int height, juce::TextEditor& textEditor)
     {
         juce::Rectangle<int> bounds (width, height); // modified
@@ -160,7 +148,7 @@ private:
     juce::Label labelUser2{{}, "User"};
     juce::Label labelKey{{}, "Key"};
     juce::Label labelPassword{{}, "Password"};
-    juce::TextButton activateKeyButton{"Activate"};
+    juce::TextButton activateKeyButton;
     juce::TextButton activateUserButton{"Activate"};
     juce::TextButton getTrialButton{"Get trial"};
     juce::TextEditor keyEditor;

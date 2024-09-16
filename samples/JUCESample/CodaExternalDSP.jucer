@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               version="1.0.3" companyName="Haven Audio" companyWebsite="haven.audio"
               companyEmail="contact@haven.audio" pluginFormats="buildAU,buildStandalone,buildVST3"
-              pluginCode="coDa" pluginManufacturerCode="HAVN">
+              pluginCode="coDa" pluginManufacturerCode="HAVN" cppLanguageStandard="20">
   <MAINGROUP id="d8b2xw" name="Coda">
     <GROUP id="{6E07BFAE-6206-E7C7-C99C-69F1A67AC72E}" name="Assets">
       <FILE id="Oon5fX" name="FREQIMG.png" compile="0" resource="1" file="Source/Assets/FREQIMG.png"/>
@@ -82,6 +82,31 @@
         <MODULEPATH id="juce_opengl" path="JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
+    <VS2022 targetFolder="Builds/VisualStudio2022" extraDefs="LS_STATIC=1"
+            externalLibraries="libcrypto.lib&#10;libcurl_a.lib&#10;libssl.lib&#10;LicenseSpring.lib&#10;">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="..\..\..\..\include\"
+                       libraryPath="..\..\..\..\bin\x64\staticMT\" defines="LIB_NAME=LicenseSpring"
+                       useRuntimeLibDLL="0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="JUCE\modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="JUCE\modules"/>
+        <MODULEPATH id="juce_dsp" path="JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2022>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
